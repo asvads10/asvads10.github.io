@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Asvad Shaik — AI/ML Engineer & Data Scientist</title>
+<style>
+  :root {
+    --bg:#f8f7f4;--surface:#fff;--accent:#1a56db;--accent2:#7c3aed;--accent3:#059669;
+    --text:#1a1a2e;--muted:#6b7280;--border:#e5e0d8;--tag-bg:#eef2ff;--tag-color:#3730a3;
+    --font-main:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;
+    --font-mono:'Courier New',Courier,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-main);line-height:1.6;overflow-x:hidden}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,244,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-logo{font-size:0.95rem;font-weight:600;color:var(--accent);font-family:var(--font-mono)}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{color:var(--muted);font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--accent);text-decoration:none}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;background:linear-gradient(160deg,#f8f7f4 60%,#eef2ff 100%)}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid #c7d7f9;background:#eef2ff;border-radius:100px;padding:6px 18px;font-size:0.75rem;font-family:var(--font-mono);color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem}
+  .hero-tag::before{content:'●';font-size:0.5rem;color:var(--accent3);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+  .hero h1{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:0.4rem}
+  .hero h1 span{color:var(--accent)}
+  .hero-role{font-size:1.1rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:1rem}
+  .hero-sub{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto 2.5rem;line-height:1.75}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+  .btn{padding:0.65rem 1.6rem;border-radius:8px;font-family:var(--font-main);font-weight:500;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+  .hero-stats{display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;justify-content:center}
+  .stat{text-align:center}
+  .stat-num{font-size:2rem;font-weight:700;color:var(--accent);font-family:var(--font-mono)}
+  .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px}
+  section{padding:5rem 2rem;max-width:1060px;margin:0 auto}
+  .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.4rem}
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:2.5rem;letter-spacing:-0.02em}
+  .divider{border:none;border-top:1px solid var(--border);margin:0}
+  .story-item{display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:2rem}
+  .story-icon{min-width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+  .story-date{font-weight:600;font-size:0.72rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem}
+  .story-text{font-size:0.93rem;color:#4b5563;line-height:1.85}
+  .story-quote{background:#f8f7f4;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-top:0.5rem}
+  .story-quote p{font-size:0.93rem;color:#374151;line-height:1.8;font-style:italic}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+  .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,box-shadow 0.2s}
+  .skill-card:hover{border-color:#c7d7f9;box-shadow:0 4px 16px rgba(26,86,219,0.06)}
+  .skill-era{font-size:0.65rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.3rem}
+  .skill-card-icon{font-size:1.4rem;margin-bottom:0.5rem}
+  .skill-card h3{font-size:0.9rem;font-weight:600;margin-bottom:0.75rem}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:0.68rem;font-family:var(--font-mono);background:var(--tag-bg);border:1px solid #c7d7f9;border-radius:4px;padding:3px 8px;color:var(--tag-color)}
+  .tag-green{background:#ecfdf5;border-color:#a7f3d0;color:#065f46}
+  .tag-purple{background:#f3f0ff;border-color:#ddd6fe;color:#5b21b6}
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+  .exp-item{position:relative;margin-bottom:2.5rem}
+  .exp-item::before{content:'';position:absolute;left:-2rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+  .exp-date{font-size:0.72rem;font-family:var(--font-mono);color:var(--accent);margin-bottom:0.25rem}
+  .exp-title{font-size:1.05rem;font-weight:600;margin-bottom:0.1rem}
+  .exp-company{font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem}
+  .exp-bullets{list-style:none}
+  .exp-bullets li{font-size:0.875rem;color:#4b5563;line-height:1.65;padding:0.2rem 0 0.2rem 1rem;position:relative}
+  .exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent3)}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,box-shadow 0.2s;display:flex;flex-direction:column}
+  .project-card:hover{border-color:#c7d7f9;box-shadow:0 4px 20px rgba(26,86,219,0.07)}
+  .project-num{font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);margin-bottom:0.75rem}
+  .project-card h3{font-size:0.95rem;font-weight:600;margin-bottom:0.5rem}
+  .project-card p{font-size:0.845rem;color:#6b7280;line-height:1.65;margin-bottom:1rem;flex:1}
+  .project-tech{display:flex;flex-wrap:wrap;gap:5px}
+  .tech-tag{font-size:0.67rem;font-family:var(--font-mono);background:#f3f0ff;border:1px solid #ddd6fe;color:#5b21b6;border-radius:4px;padding:2px 7px}
+  .accuracy-badge{display:inline-block;font-size:0.7rem;font-family:var(--font-mono);background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:4px;padding:2px 8px;margin-bottom:0.5rem}
+  .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;transition:border-color 0.2s}
+  .cert-card:hover{border-color:#c7d7f9}
+  .cert-icon{font-size:1.8rem}
+  .cert-title{font-weight:600;font-size:0.92rem}
+  .cert-sub{font-size:0.78rem;color:var(--muted);margin-top:2px}
+  .contact-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:3rem;text-align:center}
+  .contact-box h2{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem}
+  .contact-box p{color:var(--muted);margin-bottom:2rem}
+  .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .contact-link{display:flex;align-items:center;gap:8px;padding:0.6rem 1.4rem;border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-size:0.875rem;font-weight:500;transition:all 0.2s;background:var(--surface)}
+  .contact-link:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted);font-family:var(--font-mono);background:var(--surface)}
+  @media(max-width:600px){nav .nav-links{display:none}.hero h1{font-size:2.5rem}.contact-box{padding:2rem 1.5rem}section{padding:3rem 1.25rem}.story-item{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">asvad.shaik //</span>
+  <div class="nav-links">
+    <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Story</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</a>
+    <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+  </div>
+</nav>
+
+<div class="hero" id="about">
+  <div class="hero-tag">Open to AI/ML & Data Science opportunities</div>
+  <h1>Asvad <span>Shaik</span></h1>
+  <p class="hero-role">AI / ML Engineer & Data Scientist</p>
+  <p class="hero-sub">Designing intelligent systems that reason, retrieve, and act — across legal, healthcare, finance, and e-commerce domains.</p>
+  <div class="hero-ctas">
+    <a href="https://www.linkedin.com/in/asvad09/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">6+</div><div class="stat-label">AI Projects</div></div>
+    <div class="stat"><div class="stat-num">95%</div><div class="stat-label">Model Accuracy</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Industries</div></div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<section id="story" style="max-width:820px;">
+  <p class="section-label">// my journey</p>
+  <h2 class="section-title">How I Got Here</h2>
+
+  <div class="story-item">
+    <div class="story-icon" style="background:#eef2ff;">🌱</div>
+    <div>
+      <p class="story-date" style="color:var(--accent);">2019 — The Problem That Started It All</p>
+      <p class="story-text">A mountain of unstructured legal documents. One question nobody had answered — <em>"Can a machine read this the way a lawyer does?"</em> No LLMs. No magic. Just Python, XGBoost, TF-IDF, and a refusal to give up. I built document classifiers from scratch using classical ML — and got completely hooked.</p>
+    </div>
+  </div>
+
+  <div class="story-item">
+    <div class="story-icon" style="background:#ecfdf5;">📈</div>
+    <div>
+      <p class="story-date" style="color:var(--accent3);">2019–2022 — Three Years in the Trenches</p>
+      <p class="story-text">Three years going deeper — BERT, Azure Form Recognizer, AWS SageMaker, serverless architectures, NLP pipelines. Built legal extraction systems, intelligent specification reviewers, and document classification tools. Every project messier than the last. Every solution sharper. Skills forged under real pressure with real deadlines — no sandbox, no shortcuts.</p>
+    </div>
+  </div>
+
+  <div class="story-item">
+    <div class="story-icon" style="background:#faf5ff;">✈️</div>
+    <div>
+      <p class="story-date" style="color:#7c3aed;">2022–2024 — Betting on Myself</p>
+      <p class="story-text">After three years of building production AI, I made a bold move. Moved to the US and enrolled in the Masters in Computer Science at the University of North Texas. Not because I had to. Because I wanted to understand what I was building at a level most engineers never reach — theory meeting practice in real time.</p>
+    </div>
+  </div>
+
+  <div class="story-item">
+    <div class="story-icon" style="background:#eff6ff;">🔬</div>
+    <div>
+      <p class="story-date" style="color:var(--accent);">2023 — GenAI Arrived. I Was Already Ready.</p>
+      <p class="story-text">While still finishing my Masters, GPT-4, LangChain, RAG, and Agentic AI exploded onto the scene. The problems I had spent years solving the hard way suddenly had a powerful new language — and my classical ML foundation made me immediately fluent. I didn't wait to graduate. Landed a GenAI Consultant role and started building production systems simultaneously.</p>
+    </div>
+  </div>
+
+  <div class="story-item">
+    <div class="story-icon" style="background:#ecfdf5;">⚡</div>
+    <div>
+      <p class="story-date" style="color:var(--accent3);">2024–Present — Building What Matters</p>
+      <p class="story-text">Masters completed. 95% accuracy on legal AI. MRI predictive maintenance. Invoice automation across geographies. Document review cut by 40% across 50,000+ files. Today I design end-to-end intelligent systems using GPT-4o, Claude, Gemini, LangGraph, and Agentic AI — systems that don't just predict. <strong>They reason, retrieve, and act.</strong></p>
+    </div>
+  </div>
+
+  <div class="story-quote">
+    <p>"I didn't chase the hype. I built the foundation first. Classical ML taught me how AI thinks. A Masters taught me why it works. GenAI showed me how far it can go."</p>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="skills">
+  <p class="section-label">// capabilities</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2019–2022 · Foundation Era</div>
+      <div class="skill-card-icon">🧮</div>
+      <h3>Classical ML & Data Science</h3>
+      <div class="skill-tags">
+        <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span>
+        <span class="tag">TF-IDF</span><span class="tag">Doc2Vec</span><span class="tag">Logistic Regression</span>
+        <span class="tag">Feature Engineering</span><span class="tag">EDA</span>
+        <span class="tag">A/B Testing</span><span class="tag">Hypothesis Testing</span><span class="tag">Statistical Modeling</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2019–2022 · Foundation Era</div>
+      <div class="skill-card-icon">📊</div>
+      <h3>Data Analysis & Visualization</h3>
+      <div class="skill-tags">
+        <span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span><span class="tag">Plotly</span><span class="tag">SciPy</span>
+        <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2019–2022 · Foundation Era</div>
+      <div class="skill-card-icon">📐</div>
+      <h3>Deep Learning & NLP</h3>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span>
+        <span class="tag">BERT</span><span class="tag">Transformers</span><span class="tag">CNNs</span><span class="tag">RNNs</span>
+        <span class="tag">NLP</span><span class="tag">NER</span><span class="tag">Text Classification</span>
+        <span class="tag">Tokenization</span><span class="tag">Sentiment Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2019–2022 · Foundation Era</div>
+      <div class="skill-card-icon">☁️</div>
+      <h3>Cloud & Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="tag">AWS SageMaker</span><span class="tag">AWS Lambda</span>
+        <span class="tag">Azure</span><span class="tag">Azure Form Recognizer</span>
+        <span class="tag">Serverless</span><span class="tag">Docker</span>
+        <span class="tag">FastAPI</span><span class="tag">Flask</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2023–Present · GenAI Era</div>
+      <div class="skill-card-icon">🤖</div>
+      <h3>Generative & Agentic AI</h3>
+      <div class="skill-tags">
+        <span class="tag tag-green">RAG</span><span class="tag tag-green">GraphRAG</span>
+        <span class="tag tag-green">Fine-tuning</span><span class="tag tag-green">LoRA</span><span class="tag tag-green">QLoRA</span>
+        <span class="tag tag-green">LangChain</span><span class="tag tag-green">LlamaIndex</span>
+        <span class="tag tag-green">LangGraph</span><span class="tag tag-green">CrewAI</span>
+        <span class="tag tag-green">AutoGen</span><span class="tag tag-green">MCP</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2023–Present · GenAI Era</div>
+      <div class="skill-card-icon">🧠</div>
+      <h3>Large Language Models</h3>
+      <div class="skill-tags">
+        <span class="tag tag-green">GPT-4o</span><span class="tag tag-green">Claude Sonnet 3.7</span>
+        <span class="tag tag-green">Gemini 2.5 Pro</span><span class="tag tag-green">Llama 3</span>
+        <span class="tag tag-green">Mistral</span><span class="tag tag-green">HuggingFace</span>
+        <span class="tag tag-green">Ollama</span><span class="tag tag-green">vLLM</span>
+        <span class="tag tag-green">CLIP</span><span class="tag tag-green">Whisper</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2023–Present · GenAI Era</div>
+      <div class="skill-card-icon">🗄️</div>
+      <h3>Vector Databases & Search</h3>
+      <div class="skill-tags">
+        <span class="tag tag-purple">Pinecone</span><span class="tag tag-purple">ChromaDB</span>
+        <span class="tag tag-purple">FAISS</span><span class="tag tag-purple">Weaviate</span>
+        <span class="tag tag-purple">Azure Cognitive Search</span>
+        <span class="tag tag-purple">Elasticsearch</span><span class="tag tag-purple">Hybrid Search</span>
+        <span class="tag tag-purple">Embeddings</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 2023–Present · GenAI Era</div>
+      <div class="skill-card-icon">🔍</div>
+      <h3>AI Evaluation & MLOps</h3>
+      <div class="skill-tags">
+        <span class="tag tag-green">RAGAS</span><span class="tag tag-green">LangSmith</span>
+        <span class="tag tag-green">MLflow</span><span class="tag tag-green">Weights & Biases</span>
+        <span class="tag tag-green">Arize AI</span><span class="tag tag-green">Guardrails AI</span>
+        <span class="tag tag-green">Prometheus</span><span class="tag tag-green">Grafana</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 Ongoing</div>
+      <div class="skill-card-icon">🗃️</div>
+      <h3>Databases & Storage</h3>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span>
+        <span class="tag">Redis</span><span class="tag">Neo4j</span><span class="tag">SQLite</span>
+        <span class="tag">Snowflake</span><span class="tag">BigQuery</span><span class="tag">DynamoDB</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-era">📅 Ongoing</div>
+      <div class="skill-card-icon">⚙️</div>
+      <h3>Tools & Platforms</h3>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Git</span>
+        <span class="tag">GitHub Actions</span><span class="tag">Kubernetes</span><span class="tag">Terraform</span>
+        <span class="tag">Airflow</span><span class="tag">Streamlit</span><span class="tag">Angular</span>
+        <span class="tag">Postman</span><span class="tag">Jira</span><span class="tag">Confluence</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="experience">
+  <p class="section-label">// career</p>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    <div class="exp-item">
+      <div class="exp-date">Dec 2023 — Present</div>
+      <div class="exp-title">GenAI Consultant — AI Engineer</div>
+      <div class="exp-company">Cognizant Technologies · USA</div>
+      <ul class="exp-bullets">
+        <li>Collaborated with business teams to gather requirements and design scalable AI-powered solutions end-to-end.</li>
+        <li>Conducted feasibility studies and built Proof of Concepts (POCs) to validate technical approaches before full builds.</li>
+        <li>Designed and implemented solutions using Generative AI, Deep Learning, ML, Python, and modern AI frameworks.</li>
+        <li>Deployed applications into client-specific environments, ensuring compliance with enterprise standards.</li>
+        <li>Debugged and resolved errors across data pipelines, LLM workflows, and production environments.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jan 2019 — Jul 2022</div>
+      <div class="exp-title">Artificial Intelligence Engineer</div>
+      <div class="exp-company">Capgemini Consulting Services · Hyderabad, India</div>
+      <ul class="exp-bullets">
+        <li>Developed automated Document Classification and Information Extraction systems using classical ML models.</li>
+        <li>Built intelligent spec review tools using XGBoost, TF-IDF, Doc2Vec, BERT, and AWS SageMaker.</li>
+        <li>Leveraged Azure Form Recognizer for structured data extraction across legal and financial documents.</li>
+        <li>Implemented NLP pipelines, tokenization, and text classification workflows for real-world document processing.</li>
+        <li>Deployed scalable serverless architectures on AWS and Azure for production AI solutions.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="projects">
+  <p class="section-label">// work</p>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01 / Legal AI</div>
+      <span class="accuracy-badge">95% accuracy</span>
+      <h3>XML Integration for Legal Documents</h3>
+      <p>AI-driven system to integrate and process XML in crime-case legal judgments, with modular Python architecture for LLM-based content classification via a Streamlit UI.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span><span class="tech-tag">GPT-4o</span><span class="tech-tag">Gemini 2.5 Flash</span><span class="tech-tag">Lxml</span><span class="tech-tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02 / Legal AI</div>
+      <span class="accuracy-badge">95% accuracy</span>
+      <h3>Star-Paging Verification System</h3>
+      <p>Multi-step LLM pipeline converting PDF pages to images, extracting structured content across 3 LLM runs with iterative error correction and cross-verification.</p>
+      <div class="project-tech">
+        <span class="tech-tag">GPT-4o</span><span class="tech-tag">pdf2image</span><span class="tech-tag">PyPDF2</span><span class="tech-tag">FuzzyWuzzy</span><span class="tech-tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03 / Finance</div>
+      <h3>Automated Invoice Extraction System</h3>
+      <p>GPT-4o and LlamaIndex solution automating entity extraction across invoice templates from multiple geographies, with structured relational output and FastAPI + Angular interface.</p>
+      <div class="project-tech">
+        <span class="tech-tag">GPT-4o</span><span class="tech-tag">LlamaIndex</span><span class="tech-tag">Azure Form Recognizer</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Angular</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04 / Healthcare</div>
+      <h3>Predictive Maintenance of MRI — GenAI</h3>
+      <p>GenAI-driven predictive maintenance system for MRI devices with anomaly detection ML model and a RAG-based chatbot enabling maintenance teams to diagnose issues independently.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Claude Sonnet 3.5</span><span class="tech-tag">LangChain</span><span class="tech-tag">FAISS</span><span class="tech-tag">AWS</span><span class="tech-tag">Scikit-learn</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">05 / Legal</div>
+      <h3>Legal Document Classification & Extraction</h3>
+      <p>End-to-end system classifying and segmenting legal case documents using Azure Form Recognizer, XGBoost, TF-IDF, and GenAI pipelines for precise page-level categorization.</p>
+      <div class="project-tech">
+        <span class="tech-tag">GPT-4</span><span class="tech-tag">XGBoost</span><span class="tech-tag">TF-IDF</span><span class="tech-tag">Azure Form Recognizer</span><span class="tech-tag">LangChain</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">06 / Enterprise</div>
+      <span class="accuracy-badge">40% faster review</span>
+      <h3>Intelligent Specification Review System</h3>
+      <p>Dual-stage ML pipeline: document classification followed by paragraph-level importance scoring using BERT. Cut review time by 40% across 50,000+ technical documents.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PyTorch</span><span class="tech-tag">BERT</span><span class="tech-tag">MLflow</span><span class="tech-tag">AWS SageMaker</span><span class="tech-tag">Streamlit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section>
+  <p class="section-label">// recognition</p>
+  <h2 class="section-title">Certifications & Awards</h2>
+  <div class="cert-card">
+    <div class="cert-icon">🏆</div>
+    <div><div class="cert-title">Young Innovator Award — IconIdea'24</div><div class="cert-sub">Recognized for outstanding contributions to innovative AI solutions</div></div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-icon">📜</div>
+    <div><div class="cert-title">Generative AI Certification — iNeuron</div><div class="cert-sub">Comprehensive certification in Generative AI principles and applications</div></div>
+  </div>
+  <div class="cert-card">
+    <div class="cert-icon">🎓</div>
+    <div><div class="cert-title">M.S. in Computer & Information Science — 2024</div><div class="cert-sub">University of North Texas, USA</div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's Build Something</h2>
+    <p>Open to AI/ML & Data Science roles, consulting, and collaboration.</p>
+    <div class="contact-links">
+      <a href="mailto:asvads10@gmail.com" class="contact-link">✉ asvads10@gmail.com</a>
+      <a href="https://www.linkedin.com/in/asvad09/" target="_blank" class="contact-link">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Asvad Shaik — AI/ML Engineer & Data Scientist · USA</p>
+  <p style="margin-top:6px;">📞 (940) 222-5186</p>
+</footer>
+
+</body>
+</html>
